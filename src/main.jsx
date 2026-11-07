@@ -102,6 +102,7 @@ function App() {
       ) : active === "เครื่องคิดเลข" ? (
         <CalculatorPage onBack={() => setActive("home")} />
       ) : (
+       <>
       <section className="hero">
         <div className="hero-copy">
           <div className="eyebrow"><Sparkles size={15}/> YOUR MATH JOURNEY</div>
