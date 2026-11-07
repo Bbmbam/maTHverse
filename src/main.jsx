@@ -146,7 +146,12 @@ function App() {
       {["ปฐมวัย","ประถมศึกษา","มัธยมศึกษาตอนต้น","มัธยมศึกษาตอนปลาย"].map(group=><div className="level-group" key={group}><h4>{group}</h4><div className="level-buttons">{LEVELS.filter(l=>l.group===group).map(l=><button key={l.id} className={l.id===recommended.id?"recommended":""} onClick={()=>setShowLevels(false)}><strong>{l.id}</strong>{l.id===recommended.id&&<small>แนะนำ</small>}</button>)}</div></div>)}
       <p className="modal-note"><Star size={14}/> ระดับที่แนะนำอ้างอิงจากวันเกิดเท่านั้น สามารถเลือกเรียนระดับอื่นได้ตามความพร้อม</p>
     </div></div>}
-    {active!=="home" && active!=="profile" && <div className="toast" role="status"><Sparkles size={16}/> {active} จะเปิดให้ใช้งานในเฟสถัดไป</div>}
+    {active !== "home" &&
+ active !== "profile" &&
+ active !== "curriculum" &&
+ <div className="toast" role="status">
+   <Sparkles size={16}/> {active} จะเปิดให้ใช้งานในเฟสถัดไป
+ </div>}
   </div>;
 }
 
