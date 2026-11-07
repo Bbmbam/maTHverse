@@ -394,3 +394,302 @@ footer{display:flex;align-items:center;gap:12px;color:#6b9fc5;font-size:12px;mar
     min-height: 58px;
   }
 }
+
+/* =========================================
+   MathVerse - Number World
+   ========================================= */
+
+.mv-world {
+  max-width: 850px;
+  margin: 0 auto;
+  padding-bottom: 40px;
+}
+
+.mv-world-heading {
+  text-align: center;
+  margin: 25px 0;
+}
+
+.mv-world-heading h1 {
+  color: #315775;
+  font-size: 29px;
+  margin: 10px 0;
+}
+
+.mv-world-heading p {
+  color: #829bb0;
+  font-size: 14px;
+}
+
+.mv-teacher {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 17px;
+  border-radius: 19px;
+  background: #eaf6ff;
+  margin-bottom: 20px;
+}
+
+.mv-teacher-face {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  color: white;
+  font-size: 29px;
+  background: #79bce8;
+}
+
+.mv-teacher strong {
+  color: #438fc5;
+  font-size: 14px;
+}
+
+.mv-teacher p {
+  color: #68869e;
+  font-size: 12px;
+  margin: 4px 0 0;
+}
+
+.mv-sound-button {
+  margin-left: auto;
+  width: 42px;
+  height: 42px;
+  border: 0;
+  border-radius: 50%;
+  color: #438fc5;
+  background: white;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.mv-number-display {
+  background: white;
+  border: 1px solid #e5eff7;
+  border-radius: 23px;
+  padding: 25px;
+  box-shadow: 0 8px 25px #315d8008;
+}
+
+.mv-number-main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+}
+
+.mv-number-digit {
+  width: 130px;
+  height: 130px;
+  display: grid;
+  place-items: center;
+  border-radius: 27px;
+  background: #eaf6ff;
+  color: #438fc5;
+  font-size: 88px;
+  font-weight: 700;
+}
+
+.mv-number-caption {
+  display: block;
+  color: #8ba3b7;
+  font-size: 12px;
+}
+
+.mv-number-word {
+  display: block;
+  color: #315775;
+  font-size: 30px;
+  margin: 4px 0 10px;
+}
+
+.mv-listen-button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border: 0;
+  border-radius: 30px;
+  padding: 9px 13px;
+  color: #438fc5;
+  background: #edf7ff;
+  font-size: 12px;
+}
+
+.mv-number-objects {
+  min-height: 125px;
+  margin-top: 25px;
+  padding: 20px;
+  border-radius: 18px;
+  background: #f3f9fe;
+  display: grid;
+  place-items: center;
+}
+
+.mv-apple-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 48px);
+  justify-content: center;
+  gap: 12px;
+}
+
+.mv-apple-grid span {
+  font-size: 34px;
+  text-align: center;
+}
+
+.mv-empty-objects {
+  text-align: center;
+  color: #829bb0;
+}
+
+.mv-empty-objects span {
+  font-size: 45px;
+}
+
+.mv-empty-objects p {
+  font-size: 12px;
+}
+
+.mv-number-explain {
+  color: #68869e;
+  text-align: center;
+  font-size: 13px;
+  margin: 17px 0 0;
+}
+
+.mv-number-picker {
+  margin-top: 28px;
+}
+
+.mv-number-picker h2 {
+  color: #315775;
+  font-size: 19px;
+  margin-bottom: 4px;
+}
+
+.mv-number-picker > p {
+  color: #8ba3b7;
+  font-size: 12px;
+  margin-top: 0;
+}
+
+.mv-number-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 15px;
+}
+
+.mv-number-card {
+  min-height: 75px;
+  border: 2px solid #e5eff7;
+  border-radius: 17px;
+  background: white;
+  color: #438fc5;
+  font-size: 34px;
+  font-weight: 700;
+  transition: .2s;
+}
+
+.mv-number-card:hover {
+  border-color: #8bc5e9;
+  transform: translateY(-2px);
+}
+
+.mv-number-card.active {
+  border-color: #59a9df;
+  background: #eaf6ff;
+  box-shadow: 0 0 0 4px #eaf6ff;
+}
+
+.mv-adventure-next {
+  margin-top: 25px;
+  padding: 20px;
+  border-radius: 19px;
+  background: #fff8e9;
+}
+
+.mv-adventure-next > div {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #d3a34d;
+}
+
+.mv-adventure-next strong {
+  color: #8f703a;
+  font-size: 14px;
+}
+
+.mv-adventure-next p {
+  color: #a58c63;
+  font-size: 11px;
+  margin: 4px 0;
+}
+
+.mv-adventure-next > button {
+  width: 100%;
+  min-height: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 7px;
+  margin-top: 15px;
+  border: 0;
+  border-radius: 12px;
+  background: #e9b95e;
+  color: white;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.mv-adventure-next > small {
+  display: block;
+  text-align: center;
+  color: #a58c63;
+  font-size: 10px;
+  margin-top: 9px;
+}
+
+@media(max-width: 520px) {
+  .mv-world-heading h1 {
+    font-size: 23px;
+  }
+
+  .mv-number-display {
+    padding: 17px;
+  }
+
+  .mv-number-digit {
+    width: 100px;
+    height: 100px;
+    font-size: 68px;
+  }
+
+  .mv-number-main {
+    gap: 15px;
+  }
+
+  .mv-number-word {
+    font-size: 24px;
+  }
+
+  .mv-apple-grid {
+    grid-template-columns: repeat(5, 38px);
+    gap: 8px;
+  }
+
+  .mv-apple-grid span {
+    font-size: 28px;
+  }
+
+  .mv-number-card {
+    min-height: 60px;
+    font-size: 27px;
+  }
+}
+
