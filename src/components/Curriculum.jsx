@@ -29,26 +29,34 @@ export default function Curriculum({ onBack }) {
   const [selectedGroup, setSelectedGroup] = useState("preschool");
   const [selectedLevel, setSelectedLevel] = useState(null);
 
-  const groups = [
-    {
-      id: "preschool",
-      name: "อนุบาล",
-      description: "เรียนรู้ผ่านการเล่นและประสบการณ์",
-      icon: Baby,
-    },
-    {
-      id: "primary",
-      name: "ประถมศึกษา",
-      description: "สร้างพื้นฐานความคิดทางคณิตศาสตร์",
-      icon: School,
-    },
-    {
-      id: "secondary",
-      name: "มัธยมศึกษา",
-      description: "พัฒนาทักษะการคิดและแก้ปัญหา",
-      icon: GraduationCap,
-    },
-  ];
+
+const groups = [
+  {
+    id: "preschool",
+    name: "อนุบาล",
+    description: "เรียนรู้ผ่านการเล่นและประสบการณ์",
+    icon: Baby,
+  },
+  {
+    id: "primary",
+    name: "ประถมศึกษา",
+    description: "สร้างพื้นฐานความคิดทางคณิตศาสตร์",
+    icon: School,
+  },
+  {
+    id: "lower-secondary",
+    name: "มัธยมศึกษาตอนต้น",
+    description: "พัฒนาทักษะการคิดและแก้ปัญหา",
+    icon: GraduationCap,
+  },
+  {
+    id: "upper-secondary",
+    name: "มัธยมศึกษาตอนปลาย",
+    description: "ต่อยอดคณิตศาสตร์ระดับสูง",
+    icon: BookOpen,
+  },
+];
+
 
   const levels = getLevelsByGroup(selectedGroup);
 
