@@ -2,15 +2,119 @@
 let audioContext = null;
 
 // ==================================
+// Thai Voice Settings
+// ==================================
+
+// ชื่อเสียงที่มักเป็นเสียงผู้หญิง
+const FEMALE_VOICE_HINTS = [
+  "female",
+  "woman",
+  "หญิง",
+  "premwadee",
+  "kanya",
+];
+
+// ชื่อเสียงที่มักเป็นเสียงผู้ชาย
+const MALE_VOICE_HINTS = [
+  "male",
+  "man",
+  "ชาย",
+  "niwat",
+];
+
+// เปลี่ยนเป็นชื่อเสียงที่ต้องการได้ภายหลัง
+const PREFERRED_VOICE_NAME = "";
+
+// เก็บเสียงที่เลือกไว้
+let selectedThaiVoice = null;
+
+function getThaiVoices() {
+  if (!("speechSynthesis" in window)) return [];
+
+  return window.speechSynthesis
+    .getVoices()
+    .filter((voice) => voice.lang.toLowerCase().startsWith("th"));
+}
+
+function selectThaiVoice() {
+  const voices = getThaiVoices();
+
+  if (voices.length === 0) {
+    selectedThaiVoice = null;
+    return null;
+  }
+
+  // 1. เลือกเสียงตามชื่อที่กำหนดเอง
+  if (PREFERRED_VOICE_NAME) {
+    const preferred = voices.find((voice) =>
+      voice.name.toLowerCase().includes(
+        PREFERRED_VOICE_NAME.toLowerCase()
+      )
+    );
+
+    if (preferred) {
+      selectedThaiVoice = preferred;
+      return preferred;
+    }
+  }
+
+  // 2. พยายามหาเสียงผู้หญิงจากชื่อเสียง
+  const femaleVoice = voices.find((voice) => {
+    const name = voice.name.toLowerCase();
+
+    return (
+      FEMALE_VOICE_HINTS.some((hint) => name.includes(hint)) &&
+      !MALE_VOICE_HINTS.some((hint) => name.includes(hint))
+    );
+  });
+
+  if (femaleVoice) {
+    selectedThaiVoice = femaleVoice;
+    return femaleVoice;
+  }
+
+  // 3. ถ้ายังหาไม่ได้ เลือกเสียงไทยที่มีอยู่
+  selectedThaiVoice = voices[0];
+  return selectedThaiVoice;
+}
+
+// โหลดรายการเสียงเมื่อเบราว์เซอร์พร้อม
+if (typeof window !== "undefined" && "speechSynthesis" in window) {
+  window.speechSynthesis.addEventListener(
+    "voiceschanged",
+    selectThaiVoice
+  );
+}
+
+// ใช้ตรวจสอบเสียงภาษาไทยที่เครื่องรองรับ
+export function showThaiVoices() {
+  const voices = getThaiVoices();
+
+  console.table(
+    voices.map((voice) => ({
+      name: voice.name,
+      lang: voice.lang,
+      default: voice.default,
+    }))
+  );
+
+  return voices;
+}
+
+// ==================================
 // Thai Voice
 // ==================================
 
 export function speakThai(text, options = {}) {
-  if (!("speechSynthesis" in window)) {
+  if (
+    typeof window === "undefined" ||
+    !("speechSynthesis" in window)
+  ) {
     console.warn("เบราว์เซอร์นี้ไม่รองรับเสียงพูด");
     return;
   }
 
+  // ยกเลิกเสียงก่อนหน้า ป้องกันเสียงพูดซ้อน
   window.speechSynthesis.cancel();
 
   const message = new SpeechSynthesisUtterance(text);
@@ -20,14 +124,10 @@ export function speakThai(text, options = {}) {
   message.pitch = options.pitch ?? 1.15;
   message.volume = options.volume ?? 1;
 
-  const voices = window.speechSynthesis.getVoices();
+  const voice = selectedThaiVoice || selectThaiVoice();
 
-  const thaiVoice = voices.find(
-    (voice) => voice.lang.toLowerCase().startsWith("th")
-  );
-
-  if (thaiVoice) {
-    message.voice = thaiVoice;
+  if (voice) {
+    message.voice = voice;
   }
 
   window.speechSynthesis.speak(message);
@@ -38,6 +138,8 @@ export function speakThai(text, options = {}) {
 // ==================================
 
 function getAudioContext() {
+  if (typeof window === "undefined") return null;
+
   if (!audioContext) {
     const AudioContextClass =
       window.AudioContext || window.webkitAudioContext;
