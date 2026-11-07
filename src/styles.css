@@ -14,3 +14,383 @@ footer{display:flex;align-items:center;gap:12px;color:#6b9fc5;font-size:12px;mar
 .modal-backdrop{position:fixed;inset:0;background:#1e38554d;z-index:10;display:grid;place-items:center;padding:16px}.modal{width:min(100%,620px);max-height:85vh;overflow:auto;background:#fff;border-radius:22px;padding:25px;box-shadow:0 20px 70px #24445b33}.modal-head{display:flex;justify-content:space-between}.modal-head h2{font-size:21px;color:#345775;margin:4px 0}.close-button{width:34px;height:34px;border:0;border-radius:50%;background:#f0f7fc;color:#6997b9;font-size:24px}.level-group{margin-top:18px}.level-group h4{font-size:12px;color:#6e8da6;margin:0 0 9px}.level-buttons{display:flex;flex-wrap:wrap;gap:8px}.level-buttons button{position:relative;min-width:60px;border:1px solid #e2edf5;background:#fbfdff;color:#587b98;border-radius:10px;padding:10px 12px}.level-buttons button.recommended{border-color:#77b7e2;background:#edf7ff;color:#347eb2}.level-buttons small{display:block;font-size:8px;color:#5b9dce}.modal-note{display:flex;gap:7px;align-items:center;color:#8ba2b5;font-size:10px;margin:20px 0 0}.toast{position:fixed;bottom:82px;left:50%;transform:translateX(-50%);background:#315b7c;color:white;padding:10px 17px;border-radius:30px;font-size:12px;display:flex;gap:8px;align-items:center;box-shadow:0 8px 24px #24445b33;z-index:8;white-space:nowrap}
 @media(max-width:760px){.main{padding:20px 16px}.hero{padding:27px 23px;min-height:260px}.hero h1{font-size:27px}.hero-art{width:190px;transform:scale(.78);transform-origin:center right;margin-left:-40px}.recommend-card{max-width:100%;flex-wrap:wrap}.recommend-card .text-button{margin-left:54px}.feature-grid{grid-template-columns:repeat(2,1fr);gap:10px}.feature-card{padding:15px;min-height:145px}.lower-grid{grid-template-columns:1fr}.section-heading{margin-top:27px}.section-heading h2{font-size:20px}}
 @media(max-width:480px){.topbar{height:62px;padding:0 15px}.brand{font-size:18px}.age-chip{font-size:10px;padding:7px 9px}.hero{min-height:235px;padding:22px 18px}.hero-art{position:absolute;right:-35px;bottom:-30px;opacity:.42;transform:scale(.75)}.hero-copy{max-width:100%}.hero h1{font-size:25px}.hero p{font-size:12px;max-width:240px}.recommend-card{position:relative;max-width:290px;padding:9px}.recommend-card .text-button{display:none}.feature-card{min-height:142px}.feature-title{font-size:13px}.feature-desc{font-size:10px}.section-count{font-size:9px}.welcome-card{padding:26px 21px}.welcome-card h1{font-size:20px}.bottom-nav{gap:8vw}.bottom-nav button{min-width:48px}}
+
+/* =========================================
+   MathVerse - Interactive Learning
+   ========================================= */
+
+.mv-page {
+  padding-bottom: 35px;
+}
+
+.mv-lessons {
+  margin-top: 28px;
+}
+
+.mv-welcome {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(120deg, #e5f4ff, #f1f8ff);
+  border-radius: 22px;
+  padding: 25px 30px;
+  margin-bottom: 22px;
+}
+
+.mv-eyebrow {
+  color: #6aa8d3;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .5px;
+}
+
+.mv-welcome h2 {
+  color: #315775;
+  font-size: 22px;
+  margin: 7px 0;
+}
+
+.mv-welcome p {
+  color: #829bb0;
+  font-size: 13px;
+  margin: 0;
+}
+
+.mv-big-mascot {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  background: #78bce9;
+  color: white;
+  display: grid;
+  place-items: center;
+  font-size: 37px;
+  box-shadow: 0 8px 20px #78bce944;
+  flex-shrink: 0;
+}
+
+.mv-progress {
+  background: white;
+  border: 1px solid #e9f0f6;
+  border-radius: 15px;
+  padding: 16px 19px;
+  margin-bottom: 20px;
+}
+
+.mv-progress > div:first-child {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 12px;
+  color: #45637d;
+  margin-bottom: 10px;
+}
+
+.mv-progress > div:first-child span {
+  color: #75a9ce;
+}
+
+.mv-progress-track {
+  height: 9px;
+  background: #edf5fb;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.mv-progress-track span {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, #83c5ec, #539ed4);
+  border-radius: 20px;
+  transition: width .3s ease;
+}
+
+.mv-lesson-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 15px;
+}
+
+.mv-lesson-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  border: 1px solid #e7eff6;
+  border-radius: 20px;
+  background: white;
+  padding: 19px;
+  min-height: 205px;
+  transition: transform .2s, box-shadow .2s;
+}
+
+.mv-lesson-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px #315d8012;
+}
+
+.mv-lesson-card.blue { background: #f0f8ff; }
+.mv-lesson-card.purple { background: #f6f3ff; }
+.mv-lesson-card.peach { background: #fff7f0; }
+.mv-lesson-card.mint { background: #effaf6; }
+
+.mv-lesson-number {
+  font-size: 10px;
+  color: #8aa2b6;
+}
+
+.mv-lesson-emoji {
+  font-size: 38px;
+  margin: 12px 0;
+}
+
+.mv-lesson-card strong {
+  color: #34536d;
+  font-size: 16px;
+}
+
+.mv-lesson-card small {
+  color: #8a9eaf;
+  font-size: 11px;
+  margin-top: 4px;
+}
+
+.mv-lesson-footer {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #5597c6;
+  font-size: 11px;
+  font-weight: 600;
+  margin-top: auto;
+  padding-top: 13px;
+}
+
+/* Lesson activity */
+
+.mv-lesson {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.mv-back {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  border: 0;
+  background: none;
+  color: #659bc2;
+  font-size: 12px;
+  padding: 8px 0;
+}
+
+.mv-lesson-heading {
+  text-align: center;
+  margin: 25px 0;
+}
+
+.mv-lesson-heading h1 {
+  color: #315775;
+  font-size: 30px;
+  margin: 7px 0;
+}
+
+.mv-lesson-heading p {
+  color: #8a9eaf;
+  font-size: 13px;
+  margin: 0;
+}
+
+.mv-activity-card {
+  position: relative;
+  background: white;
+  border: 1px solid #e6eff6;
+  border-radius: 24px;
+  padding: 35px 25px;
+  text-align: center;
+  box-shadow: 0 10px 35px #315d8009;
+}
+
+.mv-mascot {
+  width: 55px;
+  height: 55px;
+  margin: 0 auto 15px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #80bee7;
+  color: white;
+  font-size: 29px;
+}
+
+.mv-activity-card h2 {
+  font-size: 21px;
+  color: #345775;
+  margin: 12px 0 22px;
+}
+
+.mv-objects {
+  min-height: 95px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  background: #f5faff;
+  border-radius: 17px;
+  padding: 17px;
+  margin-bottom: 24px;
+}
+
+.mv-objects span {
+  font-size: 45px;
+}
+
+.mv-choice-title {
+  color: #718ba1;
+  font-size: 13px;
+  margin-bottom: 13px;
+}
+
+.mv-choice-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.mv-choice {
+  min-width: 75px;
+  min-height: 65px;
+  border: 2px solid #e4eef6;
+  border-radius: 15px;
+  background: #fbfdff;
+  color: #477da5;
+  font-size: 25px;
+  font-weight: 600;
+  transition: .2s;
+}
+
+.mv-choice:hover {
+  border-color: #8bc5e9;
+}
+
+.mv-choice.selected {
+  border-color: #65afe0;
+  background: #eaf6ff;
+  box-shadow: 0 0 0 3px #eaf6ff;
+}
+
+.mv-primary-button {
+  min-height: 46px;
+  width: 100%;
+  max-width: 320px;
+  margin: 25px auto 0;
+  border: 0;
+  border-radius: 13px;
+  background: linear-gradient(100deg, #69b0e2, #559bd2);
+  color: white;
+  font-size: 13px;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 7px 15px #66a9d533;
+}
+
+.mv-primary-button:disabled {
+  opacity: .45;
+  cursor: not-allowed;
+}
+
+.mv-feedback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 15px;
+  margin-top: 20px;
+  border-radius: 13px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.mv-feedback.correct {
+  background: #eaf8ef;
+  color: #36845a;
+}
+
+.mv-feedback.try-again {
+  background: #fff7e9;
+  color: #ad8541;
+}
+
+.mv-coming {
+  text-align: center;
+  padding: 65px 20px;
+  background: #f0f8ff;
+  border-radius: 22px;
+  margin-top: 25px;
+}
+
+.mv-coming > span {
+  font-size: 48px;
+}
+
+.mv-coming h2 {
+  color: #416b8d;
+  font-size: 20px;
+}
+
+.mv-coming p {
+  color: #829bb0;
+  font-size: 12px;
+}
+
+@media(max-width: 520px) {
+  .mv-welcome {
+    padding: 20px;
+  }
+
+  .mv-welcome h2 {
+    font-size: 17px;
+  }
+
+  .mv-big-mascot {
+    width: 58px;
+    height: 58px;
+    font-size: 29px;
+  }
+
+  .mv-lesson-grid {
+    gap: 10px;
+  }
+
+  .mv-lesson-card {
+    padding: 14px;
+    min-height: 190px;
+  }
+
+  .mv-lesson-card strong {
+    font-size: 14px;
+  }
+
+  .mv-lesson-heading h1 {
+    font-size: 25px;
+  }
+
+  .mv-activity-card {
+    padding: 25px 15px;
+  }
+
+  .mv-objects span {
+    font-size: 37px;
+  }
+
+  .mv-choice {
+    min-width: 65px;
+    min-height: 58px;
+  }
+}
