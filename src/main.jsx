@@ -7,6 +7,7 @@ import {
 } from "lucide-react";
 import "./styles.css";
 import Curriculum from "./components/Curriculum";
+import CalculatorPage from "./components/Calculator";
 
 const LEVELS = [
   { id:"อ.1", name:"อนุบาล 1", group:"ปฐมวัย" },
@@ -96,10 +97,11 @@ function App() {
     </header>
 
     <main className="main">   
-      {active === "curriculum" ? (     
-        <Curriculum onBack={() => setActive("home")} />  
-      ) : (     
-        <>
+      {active === "curriculum" ? (
+        <Curriculum onBack={() => setActive("home")} />
+      ) : active === "เครื่องคิดเลข" ? (
+        <CalculatorPage onBack={() => setActive("home")} />
+      ) : (
       <section className="hero">
         <div className="hero-copy">
           <div className="eyebrow"><Sparkles size={15}/> YOUR MATH JOURNEY</div>
