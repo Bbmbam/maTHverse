@@ -6,6 +6,7 @@ import {
   Pencil, CheckCircle2, Star, ArrowRight, GraduationCap, Shapes, Heart
 } from "lucide-react";
 import "./styles.css";
+import Curriculum from "./components/Curriculum";
 
 const LEVELS = [
   { id:"อ.1", name:"อนุบาล 1", group:"ปฐมวัย" },
@@ -88,7 +89,11 @@ function App() {
       <div className="top-actions"><span className="age-chip"><CalendarDays size={15}/>{age?.years} ปี {age?.months} เดือน</span><button className="avatar" onClick={()=>setEditing(true)} aria-label="แก้ไขโปรไฟล์"><UserRound size={19}/></button></div>
     </header>
 
-    <main className="main">
+    <main className="main">   
+      {active === "curriculum" ? (     
+        <Curriculum onBack={() => setActive("home")} />  
+      ) : (     
+        <>
       <section className="hero">
         <div className="hero-copy">
           <div className="eyebrow"><Sparkles size={15}/> YOUR MATH JOURNEY</div>
@@ -97,7 +102,7 @@ function App() {
           <div className="recommend-card">
             <div className="recommend-icon"><GraduationCap size={23}/></div>
             <div><small>ระดับเริ่มต้นที่แนะนำ</small><strong>{recommended.name}</strong><small>เลือกเรียนระดับอื่นล่วงหน้าได้เสมอ</small></div>
-            <button className="text-button" onClick={()=>setShowLevels(true)}>ดูระดับทั้งหมด <ChevronRight size={16}/></button>
+            <button className="text-button" onClick={()=>setActive("curriculum")}>ดูระดับทั้งหมด <ChevronRight size={16}/></button>
           </div>
         </div>
         <div className="hero-art" aria-label="มาสคอต MathVerse">
@@ -109,18 +114,18 @@ function App() {
 
       <section className="section-heading"><div><span className="eyebrow">EXPLORE</span><h2>โลกของ MathVerse</h2><p>เลือกสิ่งที่อยากเรียนรู้ได้เลย</p></div><span className="section-count">6 หมวดการเรียนรู้</span></section>
       <section className="feature-grid">
-        {tiles.map(({icon:Icon,title,desc,tag,tone})=><button className={`feature-card ${tone}`} key={title} onClick={()=>setActive(title)}>
+        {tiles.map(({icon:Icon,title,desc,tag,tone})=><button className={`feature-card ${tone}`} key={title} onClick={()=>setActive(title === "บทเรียน" ? "curriculum" : title)}>
           <span className="feature-icon"><Icon size={25}/></span><span className="feature-title">{title}</span><span className="feature-desc">{desc}</span><span className="feature-tag">{tag}</span>
         </button>)}
       </section>
 
       <section className="lower-grid">
         <div className="panel level-panel">
-          <div className="panel-head"><div><span className="eyebrow">CURRICULUM</span><h3>เส้นทางการเรียนรู้</h3></div><button className="icon-button" onClick={()=>setShowLevels(true)}><ArrowRight size={18}/></button></div>
+          <div className="panel-head"><div><span className="eyebrow">CURRICULUM</span><h3>เส้นทางการเรียนรู้</h3></div><button className="icon-button" onClick={()=>setActive("curriculum")}><ArrowRight size={18}/></button></div>
           <p className="muted">หลักสูตรตั้งแต่อนุบาล 1 ถึงมัธยมศึกษาปีที่ 6</p>
           <div className="level-track"><span className="track-dot active"></span><span className="track-line"></span><span className="track-dot"></span><span className="track-line"></span><span className="track-dot"></span></div>
           <div className="track-labels"><span>ปฐมวัย</span><span>ประถม</span><span>มัธยม</span></div>
-          <button className="outline-button" onClick={()=>setShowLevels(true)}>สำรวจ 15 ระดับชั้น <ChevronRight size={16}/></button>
+          <button className="outline-button" onClick={()=>setActive("curriculum")}>สำรวจ 15 ระดับชั้น <ChevronRight size={16}/></button>
         </div>
         <div className="panel mascot-panel">
           <div className="panel-head"><div><span className="eyebrow">YOUR FRIENDS</span><h3>เพื่อนร่วมเรียนรู้</h3></div><Sparkles size={20} className="soft-icon"/></div>
@@ -128,7 +133,9 @@ function App() {
         </div>
       </section>
       <footer>MathVerse <span>คิดเป็น เล่นเป็น เรียนรู้ได้ทุกวัน</span><small>Phase 1 · Starter experience</small></footer>
-    </main>
+    </>
+  )}
+</main>
 
     <nav className="bottom-nav">
       {[["home","⌂","หน้าหลัก"],["เรียนรู้","▤","เรียนรู้"],["รางวัล","☆","รางวัล"],["profile","◉","โปรไฟล์"]].map(([id,icon,label])=><button key={id} className={active===id?"selected":""} onClick={()=>id==="profile"?setEditing(true):setActive(id)}><span>{icon}</span>{label}</button>)}
