@@ -72,7 +72,13 @@ function App() {
   const recIndex = recommendedIndex(age);
   const recommended = LEVELS[recIndex];
 
-  useEffect(()=>{ if ("serviceWorker" in navigator) navigator.serviceWorker.register("/sw.js").catch(()=>{}); },[]);
+  useEffect(() => {
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register(
+      `${import.meta.env.BASE_URL}sw.js`
+    ).catch(error => console.error("Service Worker error:", error));
+  }
+}, []);
   function saveProfile(e) {
     e.preventDefault();
     if (!name.trim() || !birthdate || !ageFromBirthdate(birthdate)) return;
